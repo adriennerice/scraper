@@ -1,0 +1,63 @@
+/* Add CSS */
+
+.background-image{
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+}
+
+.navbar {
+    background-color: #e06e2b;
+}
+
+.navbar-nav > li > a.newScrape,
+.navbar-nav > li > a.clear {
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: 800;
+  color: white;
+}
+
+.newScrape, .deleteNews {
+    margin-left: 10px;
+}
+.card-img {
+    height: 235px;
+    width: 265px;
+    margin-bottom: -5;
+}
+
+.headlineTop {
+    background-color: #e06e2b;
+    padding-top: -10;
+}
+
+.card-body {
+    padding: 0;
+    margin: 0
+}
+
+.cardBottom {
+    padding: 20px 20px 0px 20px
+}
+
+.buttonBottom {
+    padding: 15px 20px 0px 20px;
+}
+
+.list-group-item, #notesSaved {
+    width: 100%;
+}
+
+.cardNotesSaved {
+    border-style: none;
+}
+
+.footer {
+    background-color: #e06e2b;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+} 
+
+

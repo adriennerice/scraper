@@ -1,2 +1,2 @@
 # scraper
-Scrape date from a website
+Scrape data from a website

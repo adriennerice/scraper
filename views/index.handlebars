@@ -1,46 +1,97 @@
-  <main role="main" class="inner cover">
-    {{!-- <h1 class="cover-heading">Cover your page.</h1> --}}
-    <table id="results">
-        <thead>
-           <tr>
-               <th>Headline</th>
-               <th>Summary</th>
-               <th></th>
-           </tr> 
-        </thead>
-        <tbody>
-            {{#each news}}
-            <tr>
-                <td> {{this.headline }} </td>
-                <td> {{this.summary }} </td>
-                <td> <button class="btn toSave" data-id={{this._id}} data-toggle="modal" data-target="#newsModal">Save</button></td>
-            </tr>
-            {{/each }}
-        </tbody>
-  </main>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand text-white" href="/">Anime News Scraper</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="newsModal" tabindex="-1" role="dialog">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/saved">Saved Articles</a>
+        </li>
+        <li class="nav-item">
+          <button id="scrape" class="btn btn-dark newScrape" data-toggle="modal" data-target="scrapeModal">SCRAPE NEW ARTICLES</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="jumbotron jumbotron-fluid text-center background-image">
+      <div class="overlay">
+        <div class="caption">
+            <h1 class="display-1 text-white">Anime News Scraper</h1>
+            <h2 class="text-white">Crunchy Roll news</h2>
+        </div>
+      </div>
+  </div>
+
+  <div class="container-fluid">
+    <div id="results">
+      <div class="col-12">  
+        {{#if news}}
+        {{#each news}}
+          <div class="card border-dark mb-3">
+            <div class="row ">
+              <div class="col-md-2">
+                <img src="{{imgUrl}}" class="card-img" alt="news image">
+              </div>
+              <div class="col-md-10 ">
+                <div class="card-body">
+                    <div class="card-header text-black headlineTop">
+                      <h4 class="card-title "><a href={{url}} target="_blank" class="text-white">
+                        {{headline}}</a>
+                      </h4>
+                    </div>
+                  <div class="row">
+                    <p class="card-text cardBottom">
+                      {{summary}}
+                    </p>
+                    <span class="buttonBottom">
+                      <button id="{{_id}}" class="btn btn-primary saveBtn">Save News</button>
+                    </span>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+          
+        {{/each}}
+        {{else}}
+          <div class="card text-white bg-warning w-90 p-1">
+            <div class="card-body text-center">
+              <h4>No new articles</h4>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  </div>      
+
+    <!-- ScrapeModal -->
+    <div class="modal fade" id="scrapeModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Save News Note</h5>
                 <button type="button" class="close" data-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p>Headline:</p>
-                <p>Note:</p>
+                <h2>New articles added</h2>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
             </div>
         </div>
     </div>
-  {{!-- <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-    </div>
-  </footer> --}}
-</div>
+  
+
+{{!-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+<script src="../../assets/js/app.js"></script> --}}
