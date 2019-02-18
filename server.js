@@ -182,6 +182,7 @@ app.delete("/note/:id", function(req, res){
         res.json(err);
     });
 });
+
 // Listen on the port
 
 app.listen(PORT, function() {

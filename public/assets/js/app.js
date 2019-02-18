@@ -48,7 +48,6 @@ $(document).ready(function() {
     });
 
   
-
     // Open Note Modal and populate notes
     $(".addNote").click(function(event){
         event.preventDefault();
@@ -103,7 +102,7 @@ $(document).ready(function() {
     })
 
     // Delete note
-    $("#btnDelete").click(function(event){
+    $(document).on("click", "#btnDelete", function(event){
         event.preventDefault();
         console.log("Hello")
         const buttonId = $(this).attr("data");
@@ -111,11 +110,10 @@ $(document).ready(function() {
 
         $.ajax({
             url: '/note/' + buttonId,
-            type: "PUT"
+            type: "DELETE"
         })
         .then(function() {
             location.reload();
         })
-    })
-    
+    })  
 })
