@@ -27,7 +27,13 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Connect to mongo database
-mongoose.connect("mongodb://localhost/animeNews", { useNewUrlParser: true });
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/animeNews";
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
+
+// mongoose.connect("mongodb://localhost/animeNews", { useNewUrlParser: true });
 
 // Check if connected to db
 var dbConnect = mongoose.connection;
